@@ -4,12 +4,14 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import TodoList from "./components/TodoList";
 import Profile from "./components/Profile";
+import HomePage from "./components/Home";
 
 class App extends React.Component {
   render() {
     return (
       <Router>
         <Switch>
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/todos" component={TodoList} />

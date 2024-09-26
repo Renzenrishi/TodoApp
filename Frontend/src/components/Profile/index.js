@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Cookies from "js-cookie";
 import { withRouter } from "react-router-dom";
+import "./index.css"; // Make sure to import the CSS file
 
 class Profile extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Profile extends Component {
   }
 
   fetchProfile = async () => {
-    const token = Cookies.get("jwt_token"); // Get JWT token from cookies
+    const token = Cookies.get("jwt_token");
 
     if (!token) {
       alert("You need to login first.");
@@ -30,7 +31,7 @@ class Profile extends Component {
     try {
       const response = await fetch("http://localhost:5000/profile", {
         headers: {
-          Authorization: token, // Pass JWT token in the headers
+          Authorization: token,
         },
       });
 
@@ -77,14 +78,16 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
+      <div className="profile-container">
         <h2>Your Profile</h2>
         {this.state.success && (
-          <p style={{ color: "green" }}>{this.state.success}</p>
+          <p className="success-message">{this.state.success}</p>
         )}
-        {this.state.error && <p style={{ color: "red" }}>{this.state.error}</p>}
+        {this.state.error && (
+          <p className="error-message">{this.state.error}</p>
+        )}
 
-        <form onSubmit={this.handleUpdateProfile}>
+        <form className="profile-form" onSubmit={this.handleUpdateProfile}>
           <label>
             Name:
             <input
@@ -93,6 +96,7 @@ class Profile extends Component {
               value={this.state.name}
               onChange={this.handleInputChange}
               required
+              className="input-field"
             />
           </label>
           <br />
@@ -104,21 +108,25 @@ class Profile extends Component {
               value={this.state.email}
               onChange={this.handleInputChange}
               required
+              className="input-field"
             />
           </label>
           <br />
           <label>
-            New Password
+            New Password:
             <input
               type="password"
               name="password"
               value={this.state.password}
               onChange={this.handleInputChange}
               placeholder="New password"
+              className="input-field"
             />
           </label>
           <br />
-          <button type="submit">Update Profile</button>
+          <button type="submit" className="update-button">
+            Update Profile
+          </button>
         </form>
       </div>
     );

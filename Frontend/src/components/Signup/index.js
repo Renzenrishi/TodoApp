@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom"; // Import the withRouter helper//
-import "./index.css";
+import { withRouter, Link } from "react-router-dom";
+import "./index.css"; // Import the CSS file
 
 class Signup extends Component {
   constructor(props) {
@@ -55,6 +55,7 @@ class Signup extends Component {
             value={this.state.name}
             onChange={this.handleInputChange}
             required
+            className="input-field"
           />
           <input
             type="email"
@@ -63,6 +64,7 @@ class Signup extends Component {
             value={this.state.email}
             onChange={this.handleInputChange}
             required
+            className="input-field"
           />
           <input
             type="password"
@@ -71,11 +73,18 @@ class Signup extends Component {
             value={this.state.password}
             onChange={this.handleInputChange}
             required
+            className="input-field"
           />
-          <button type="submit">Signup</button>
+          <button type="submit" className="signup-button">
+            Signup
+          </button>
         </form>
-        {this.state.error && <p style={{ color: "red" }}>{this.state.error}</p>}
-        <Link to="/login">Already a user!Login</Link>
+        {this.state.error && (
+          <p className="error-message">{this.state.error}</p>
+        )}
+        <Link to="/login" className="login-link">
+          Already a user? Login
+        </Link>
       </div>
     );
   }

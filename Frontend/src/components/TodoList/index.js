@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Cookies from "js-cookie";
 import { withRouter } from "react-router-dom";
-
-import "./index.css";
+import "./index.css"; // Ensure to import the CSS file
 
 class TodoList extends Component {
   constructor(props) {
@@ -56,7 +55,7 @@ class TodoList extends Component {
     const token = Cookies.get("jwt_token");
 
     if (!newTask) {
-      alert("Task title cannot be empty."); // Validation check
+      alert("Task title cannot be empty.");
       return;
     }
 
@@ -142,36 +141,44 @@ class TodoList extends Component {
     return (
       <div className="todo-container">
         <h2>Your TODOs</h2>
-        {this.state.error && <p style={{ color: "red" }}>{this.state.error}</p>}
-        <button className="button" onClick={this.handleLogout}>
-          Logout
-        </button>
-        <button className="button" onClick={this.handleProfile}>
-          Profile
-        </button>
+        {this.state.error && (
+          <p className="error-message">{this.state.error}</p>
+        )}
+        <div className="button-container">
+          <button className="button" onClick={this.handleLogout}>
+            Logout
+          </button>
+          <button className="button" onClick={this.handleProfile}>
+            Profile
+          </button>
+        </div>
 
-        <div>
+        <div className="task-input-container">
           <input
             type="text"
             name="newTask"
             value={this.state.newTask}
             onChange={this.handleInputChange}
             placeholder="New task title"
+            className="task-input"
           />
           <select
             name="status"
             value={this.state.status}
             onChange={this.handleInputChange}
+            className="status-select"
           >
             <option value="pending">Pending</option>
             <option value="in progress">In Progress</option>
             <option value="done">Done</option>
           </select>
-          <button onClick={this.handleAddTask}>Add Task</button>
+          <button onClick={this.handleAddTask} className="add-task-button">
+            Add Task
+          </button>
         </div>
         <ul className="tasks-container">
           {this.state.tasks.map((task) => (
-            <li key={task.id}>
+            <li key={task.id} className={`task-item ${task.status}`}>
               <div>
                 <input
                   type="checkbox"
@@ -180,7 +187,10 @@ class TodoList extends Component {
                 />
                 {task.title} - {task.status}
               </div>
-              <button onClick={() => this.handleDeleteTask(task.id)}>
+              <button
+                onClick={() => this.handleDeleteTask(task.id)}
+                className="delete-button"
+              >
                 Delete
               </button>
             </li>

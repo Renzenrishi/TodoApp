@@ -1,77 +1,56 @@
-/* Signup Form Styles */
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
+.signup-body {
+  width: 400px;
+  margin: auto;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-h2 {
-  text-align: center;
-  color: #333;
-}
-
-form {
-  max-width: 400px;
-  margin: 0 auto;
-  background: white;
-  padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-input {
-  width: 100%;
+.signup-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  margin-bottom: 15px;
   padding: 10px;
-  margin: 10px 0;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
+  border-radius: 4px;
 }
 
-input:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-button {
-  width: 100%;
+.signup-button {
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
   padding: 10px;
-  background-color: #007bff;
-  color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-button:disabled {
-  background-color: #007bff66; /* Slightly transparent */
-  cursor: not-allowed;
+.signup-button:hover {
+  background-color: #45a049; /* Darker green on hover */
 }
 
-button:hover:not(:disabled) {
-  background-color: #0056b3;
-}
-
-p {
-  text-align: center;
+.error-message {
   color: red;
+  text-align: center;
+  margin-top: 10px;
 }
 
-a {
+.login-link {
   display: block;
   text-align: center;
   margin-top: 10px;
-  color: #007bff;
   text-decoration: none;
+  color: #007bff; /* Bootstrap primary color */
 }
 
-a:hover {
+.login-link:hover {
   text-decoration: underline;
 }
